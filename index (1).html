@@ -1,0 +1,515 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f7f5">
+  <meta name="description" content="OC Digital provides hands-on back-office support for HVAC, plumbing, electrical, cleaning, and fleet service businesses. We handle invoicing, accounts receivable, job paperwork, and the admin that keeps work moving.">
+  <meta name="keywords" content="contractor back office support, HVAC administrative support, plumbing invoicing, electrical contractor admin, accounts receivable services, invoice follow-up, commercial cleaning admin, fleet maintenance paperwork, New York business operations support">
+  <meta name="author" content="OC Digital">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="OC Digital | Back-office support for service businesses">
+  <meta property="og:description" content="Less time buried in paperwork. More time running the business. Practical, hands-on administrative support for service businesses.">
+  <meta property="og:url" content="https://ocdigitalny.com/">
+  <meta property="og:image" content="https://ocdigitalny.com/ocdidigtlacircular%20icon.png">
+  <meta name="twitter:card" content="summary">
+  <title>OC Digital | Back-office support for HVAC, plumbing & service businesses</title>
+  <link rel="canonical" href="https://ocdigitalny.com/">
+  <link rel="icon" type="image/png" href="ocdidigtlacircular%20icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #171918;
+      --muted: #6b706d;
+      --line: rgba(25, 30, 27, .10);
+      --paper: #f7f7f5;
+      --white: #fff;
+      --orange: #fb8200;
+      --orange-dark: #e96d00;
+      --warm: #fff5e9;
+      --max: 1160px;
+      --shadow: 0 24px 70px rgba(27, 31, 28, .08);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 100px; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(ellipse at 78% 1%, rgba(251,130,0,.075), transparent 28rem),
+        linear-gradient(180deg, #fafaf8 0%, var(--paper) 58%, #f4f4f1 100%);
+      font-family: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    .container { width: min(var(--max), calc(100% - 48px)); margin: 0 auto; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 9px;
+      color: #a75a12; font-size: 11px; font-weight: 700;
+      letter-spacing: .14em; text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 20px; height: 1px; background: var(--orange); }
+    .section { padding: 104px 0; }
+    .section-heading { max-width: 690px; margin-bottom: 42px; }
+    .section-heading h2 {
+      margin: 15px 0 14px; font: 700 clamp(32px, 4vw, 48px)/1.08 "Manrope", sans-serif;
+      letter-spacing: -.045em;
+    }
+    .section-heading p { max-width: 590px; color: var(--muted); font-size: 16px; line-height: 1.75; margin: 0; }
+
+    /* Navigation */
+    .site-header {
+      position: sticky; top: 0; z-index: 20;
+      padding: 13px 0;
+      background: rgba(250,250,248,.78);
+      border-bottom: 1px solid rgba(255,255,255,.75);
+      backdrop-filter: blur(22px) saturate(150%);
+      -webkit-backdrop-filter: blur(22px) saturate(150%);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; gap: 28px; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; min-width: 190px; }
+    .brand img { width: 43px; height: 43px; object-fit: contain; }
+    .brand-name { font: 800 19px/1 "Manrope", sans-serif; letter-spacing: -.055em; }
+    .brand-name span { color: var(--orange-dark); }
+    .nav-links { display: flex; align-items: center; gap: 30px; color: #555b57; font-size: 13px; font-weight: 600; }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-cta, .button {
+      display: inline-flex; justify-content: center; align-items: center; gap: 10px;
+      border: 1px solid var(--ink); border-radius: 999px;
+      background: var(--ink); color: white; font-size: 13px; font-weight: 700;
+      padding: 13px 19px; transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+      cursor: pointer;
+    }
+    .nav-cta:hover, .button:hover { background: #303633; transform: translateY(-2px); box-shadow: 0 10px 25px rgba(18,23,20,.14); }
+    .button-orange { background: var(--orange); border-color: var(--orange); color: #21180e; }
+    .button-orange:hover { background: #ff982b; border-color: #ff982b; }
+    .button-outline { color: var(--ink); background: rgba(255,255,255,.55); border-color: rgba(23,25,24,.2); }
+    .button-outline:hover { color: var(--ink); background: white; }
+    .arrow { font-size: 17px; line-height: 0; }
+    .menu-toggle { display: none; border: 1px solid var(--line); background: rgba(255,255,255,.7); border-radius: 50%; width: 43px; height: 43px; font-size: 20px; }
+
+    /* Hero */
+    .hero { padding: 88px 0 82px; position: relative; overflow: hidden; }
+    .hero::after {
+      content: ""; position: absolute; width: 520px; height: 520px; border-radius: 50%;
+      right: -260px; top: 20px; pointer-events: none;
+      background: radial-gradient(circle, rgba(251,130,0,.10), rgba(251,130,0,0) 68%);
+    }
+    .hero-grid { display: grid; grid-template-columns: 1.12fr .88fr; align-items: center; gap: 70px; position: relative; z-index: 1; }
+    .hero h1 { max-width: 680px; margin: 20px 0 21px; font: 800 clamp(43px, 6.1vw, 72px)/.99 "Manrope", sans-serif; letter-spacing: -.065em; }
+    .hero h1 .accent { color: var(--orange-dark); }
+    .hero-copy { max-width: 570px; margin: 0; color: #626965; font-size: 17px; line-height: 1.8; }
+    .hero-actions { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-top: 31px; }
+    .hero-note { display: flex; align-items: center; gap: 11px; margin-top: 27px; color: #777d79; font-size: 12px; }
+    .note-mark { width: 7px; height: 7px; border-radius: 50%; background: var(--orange); box-shadow: 0 0 0 4px rgba(251,130,0,.12); }
+    .hero-visual { position: relative; min-height: 430px; display: flex; align-items: center; justify-content: center; }
+    .glass-panel {
+      position: relative; width: min(100%, 440px); padding: 29px;
+      border: 1px solid rgba(255,255,255,.9); border-radius: 28px;
+      background: linear-gradient(140deg, rgba(255,255,255,.82), rgba(255,255,255,.48));
+      box-shadow: 0 30px 90px rgba(31,34,31,.10), inset 0 1px 0 rgba(255,255,255,.95);
+      backdrop-filter: blur(24px) saturate(145%); -webkit-backdrop-filter: blur(24px) saturate(145%);
+      transform: rotate(1.2deg);
+    }
+    .panel-top { display: flex; justify-content: space-between; align-items: center; padding-bottom: 22px; border-bottom: 1px solid var(--line); }
+    .panel-label { color: #858b87; font-size: 10px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
+    .panel-status { display: flex; align-items: center; gap: 7px; font-size: 11px; font-weight: 600; color: #4e725e; }
+    .panel-status::before { content: ""; width: 6px; height: 6px; background: #57a878; border-radius: 50%; }
+    .panel-title { font: 700 23px/1.2 "Manrope", sans-serif; letter-spacing: -.04em; margin: 22px 0 7px; }
+    .panel-subtitle { color: #858b87; font-size: 12px; margin: 0 0 25px; }
+    .task-list { display: grid; gap: 10px; }
+    .task {
+      display: flex; gap: 13px; align-items: center; padding: 13px 14px;
+      border: 1px solid rgba(30,35,31,.07); border-radius: 14px; background: rgba(255,255,255,.65);
+    }
+    .task-icon { flex: 0 0 34px; height: 34px; display: grid; place-items: center; border-radius: 10px; background: var(--warm); color: #bd650c; font-size: 15px; }
+    .task strong { display: block; font-size: 12px; margin-bottom: 3px; }
+    .task small { display: block; color: #888e8a; font-size: 10px; }
+    .task-check { margin-left: auto; color: #548568; font-size: 16px; }
+    .floating-tag {
+      position: absolute; right: -9px; bottom: 27px; display: flex; align-items: center; gap: 11px;
+      padding: 13px 17px; border-radius: 15px; background: rgba(255,255,255,.85);
+      border: 1px solid rgba(255,255,255,.95); box-shadow: 0 15px 40px rgba(30,34,31,.10);
+      backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); transform: rotate(-2deg);
+    }
+    .floating-number { font: 800 24px/1 "Manrope", sans-serif; letter-spacing: -.05em; color: var(--orange-dark); }
+    .floating-caption { font-size: 10px; color: #676e69; line-height: 1.4; }
+
+    /* Trust strip */
+    .trust-strip { padding: 25px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: rgba(255,255,255,.3); }
+    .trust-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .trust-label { color: #919792; font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; white-space: nowrap; }
+    .trust-items { display: flex; gap: clamp(18px, 4vw, 52px); color: #555c57; font: 700 13px "Manrope", sans-serif; flex-wrap: wrap; }
+
+    /* Pain points */
+    .pain-section { background: #fff; }
+    .pain-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .pain-card {
+      padding: 25px; min-height: 207px; border: 1px solid var(--line); border-radius: 19px;
+      background: linear-gradient(145deg, #fff, #fbfbf9); transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .pain-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(26,30,27,.07); }
+    .pain-number { color: #c4c8c4; font: 700 11px "Manrope", sans-serif; letter-spacing: .08em; }
+    .pain-card h3 { margin: 24px 0 9px; font: 700 18px "Manrope", sans-serif; letter-spacing: -.025em; }
+    .pain-card p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.7; }
+
+    /* Services */
+    .services-layout { display: grid; grid-template-columns: .72fr 1.28fr; gap: 85px; align-items: start; }
+    .services-intro { position: sticky; top: 125px; }
+    .services-intro h2 { margin: 15px 0; font: 700 clamp(32px, 4vw, 48px)/1.08 "Manrope", sans-serif; letter-spacing: -.045em; }
+    .services-intro p { color: var(--muted); font-size: 15px; line-height: 1.8; }
+    .service-list { border-top: 1px solid var(--line); }
+    .service-row { display: grid; grid-template-columns: 48px 1fr; gap: 18px; padding: 23px 0; border-bottom: 1px solid var(--line); }
+    .service-icon { width: 42px; height: 42px; display: grid; place-items: center; border: 1px solid rgba(251,130,0,.2); border-radius: 13px; color: #b96006; background: #fff8ef; font-size: 17px; }
+    .service-row h3 { margin: 1px 0 7px; font: 700 16px "Manrope", sans-serif; letter-spacing: -.02em; }
+    .service-row p { margin: 0; max-width: 590px; color: var(--muted); font-size: 13px; line-height: 1.75; }
+
+    /* Case study */
+    .case-section { background: #202522; color: white; position: relative; overflow: hidden; }
+    .case-section::before { content: ""; position: absolute; width: 520px; height: 520px; right: -190px; top: -240px; border-radius: 50%; background: radial-gradient(circle, rgba(251,130,0,.2), transparent 70%); }
+    .case-grid { position: relative; display: grid; grid-template-columns: .9fr 1.1fr; gap: 90px; align-items: center; }
+    .case-section .eyebrow { color: #ffb15d; }
+    .case-section h2 { margin: 17px 0; max-width: 490px; font: 700 clamp(34px, 4vw, 49px)/1.07 "Manrope", sans-serif; letter-spacing: -.05em; }
+    .case-section .case-intro { color: #b8c0ba; font-size: 15px; line-height: 1.8; max-width: 460px; }
+    .case-quote { padding: 31px; border: 1px solid rgba(255,255,255,.12); border-radius: 22px; background: linear-gradient(140deg, rgba(255,255,255,.095), rgba(255,255,255,.035)); box-shadow: inset 0 1px 0 rgba(255,255,255,.08); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); }
+    .quote-mark { color: var(--orange); font: 700 46px/1 Georgia, serif; }
+    .case-quote h3 { margin: 12px 0 9px; font: 700 21px "Manrope", sans-serif; letter-spacing: -.03em; }
+    .case-quote p { margin: 0; color: #c2c9c3; font-size: 14px; line-height: 1.8; }
+    .case-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin-top: 25px; }
+    .case-stat { padding: 17px 18px; border-radius: 15px; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.08); }
+    .case-stat strong { display: block; color: #ffad52; font: 800 27px/1.1 "Manrope", sans-serif; letter-spacing: -.05em; }
+    .case-stat span { display: block; margin-top: 6px; color: #c0c7c1; font-size: 11px; line-height: 1.45; }
+    .case-client { display: flex; gap: 11px; align-items: center; margin-top: 23px; }
+    .client-dot { width: 36px; height: 36px; display: grid; place-items: center; border-radius: 50%; color: #ffb15d; background: rgba(251,130,0,.16); font-size: 12px; font-weight: 700; }
+    .case-client strong { display: block; font-size: 12px; }
+    .case-client small { display: block; margin-top: 3px; color: #9ca69f; font-size: 10px; }
+
+    /* Process */
+    .process-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; counter-reset: steps; }
+    .process-step { padding-top: 22px; border-top: 1px solid var(--line); counter-increment: steps; }
+    .process-step::before { content: "0" counter(steps); color: var(--orange-dark); font: 700 12px "Manrope", sans-serif; letter-spacing: .1em; }
+    .process-step h3 { margin: 20px 0 9px; font: 700 19px "Manrope", sans-serif; letter-spacing: -.03em; }
+    .process-step p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.75; }
+
+    /* Scope / pricing */
+    .scope-section { padding: 0 0 104px; }
+    .scope-card { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 35px; padding: 40px 44px; border-radius: 24px; border: 1px solid rgba(255,255,255,.95); background: linear-gradient(120deg, rgba(255,255,255,.9), rgba(255,255,255,.55)); box-shadow: var(--shadow), inset 0 1px 0 white; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+    .scope-card h2 { margin: 10px 0 10px; font: 700 31px/1.1 "Manrope", sans-serif; letter-spacing: -.045em; }
+    .scope-card p { max-width: 640px; margin: 0; color: var(--muted); font-size: 14px; line-height: 1.75; }
+    .scope-aside { text-align: right; min-width: 210px; }
+    .scope-aside span { display: block; color: #858c87; font-size: 10px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
+    .scope-aside strong { display: block; margin: 7px 0 14px; font: 700 18px "Manrope", sans-serif; }
+
+    /* Team */
+    .team-section { background: #fff; }
+    .team-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; max-width: 780px; }
+    .team-card { display: flex; align-items: center; gap: 20px; padding: 20px; border: 1px solid var(--line); border-radius: 19px; background: #fcfcfb; }
+    .team-photo { position: relative; flex: 0 0 78px; height: 78px; border-radius: 17px; overflow: hidden; background: linear-gradient(145deg, #fff0dd, #f4e8d8); display: grid; place-items: center; color: #a35d16; font: 800 20px "Manrope", sans-serif; }
+    .team-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .team-card h3 { margin: 0 0 5px; font: 700 16px "Manrope", sans-serif; }
+    .team-card p { margin: 0; color: #858b87; font-size: 12px; }
+
+    /* FAQ and footer */
+    .faq-layout { display: grid; grid-template-columns: .75fr 1.25fr; gap: 80px; }
+    .faq-layout .section-heading { margin: 0; }
+    .faq-list { border-top: 1px solid var(--line); }
+    details { border-bottom: 1px solid var(--line); padding: 19px 0; }
+    summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: 20px; font: 700 14px "Manrope", sans-serif; }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; color: var(--orange-dark); font: 400 21px/1 "DM Sans", sans-serif; }
+    details[open] summary::after { content: "−"; }
+    details p { max-width: 620px; margin: 12px 30px 0 0; color: var(--muted); font-size: 13px; line-height: 1.8; }
+    .footer-cta { padding: 83px 0; background: #fff; text-align: center; }
+    .footer-cta h2 { max-width: 700px; margin: 15px auto; font: 800 clamp(37px, 5vw, 57px)/1.03 "Manrope", sans-serif; letter-spacing: -.06em; }
+    .footer-cta p { max-width: 520px; margin: 0 auto; color: var(--muted); font-size: 15px; line-height: 1.8; }
+    .footer-cta .hero-actions { justify-content: center; margin-top: 27px; }
+    footer { padding: 27px 0; background: #f4f4f1; border-top: 1px solid var(--line); }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .footer-brand { display: flex; align-items: center; gap: 9px; font: 800 15px "Manrope", sans-serif; }
+    .footer-brand img { width: 30px; height: 30px; }
+    .footer-meta { display: flex; align-items: center; gap: 22px; color: #777e79; font-size: 11px; }
+    .footer-meta a:hover { color: var(--ink); }
+
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr  .85fr; gap: 28px; }
+      .hero { padding-top: 68px; }
+      .services-layout, .case-grid, .faq-layout { gap: 45px; }
+      .scope-card { padding: 32px; }
+    }
+    @media (max-width: 720px) {
+      .container { width: min(100% - 36px, var(--max)); }
+      .site-header { padding: 9px 0; }
+      .brand { min-width: 0; }
+      .brand img { width: 39px; height: 39px; }
+      .menu-toggle { display: grid; place-items: center; }
+      .nav-cta { display: none; }
+      .nav-links { display: none; position: absolute; top: 62px; left: 18px; right: 18px; padding: 18px; border: 1px solid rgba(255,255,255,.9); border-radius: 18px; background: rgba(255,255,255,.94); box-shadow: 0 18px 50px rgba(30,35,31,.12); backdrop-filter: blur(20px); flex-direction: column; align-items: stretch; gap: 0; }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 13px 7px; border-bottom: 1px solid var(--line); }
+      .nav-links a:last-child { border: 0; }
+      .hero { padding: 58px 0 45px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 22px; }
+      .hero h1 { font-size: clamp(44px, 12vw, 61px); }
+      .hero-copy { font-size: 15px; }
+      .hero-visual { min-height: 370px; margin: 0 -5px; }
+      .glass-panel { padding: 22px; }
+      .floating-tag { right: 0; bottom: 2px; }
+      .trust-inner { align-items: flex-start; flex-direction: column; gap: 13px; }
+      .trust-items { gap: 12px 22px; font-size: 12px; }
+      .section { padding: 75px 0; }
+      .section-heading { margin-bottom: 29px; }
+      .pain-grid { grid-template-columns: 1fr; }
+      .pain-card { min-height: auto; padding: 22px; }
+      .pain-card h3 { margin-top: 15px; }
+      .services-layout, .case-grid, .faq-layout { grid-template-columns: 1fr; gap: 34px; }
+      .services-intro { position: static; }
+      .case-grid { gap: 30px; }
+      .case-quote { padding: 24px; }
+      .process-grid { grid-template-columns: 1fr; gap: 25px; }
+      .scope-section { padding-bottom: 75px; }
+      .scope-card { grid-template-columns: 1fr; padding: 27px; gap: 25px; }
+      .scope-aside { text-align: left; }
+      .team-grid { grid-template-columns: 1fr; }
+      .footer-cta { padding: 67px 0; }
+      .footer-inner { align-items: flex-start; flex-direction: column; }
+      .footer-meta { flex-wrap: wrap; gap: 12px 20px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "OC Digital",
+    "url": "https://ocdigitalny.com/",
+    "logo": "https://ocdigitalny.com/ocdidigtlacircular%20icon.png",
+    "telephone": "+1-914-436-2349",
+    "description": "Hands-on back-office and administrative support for HVAC, plumbing, electrical, commercial cleaning, auto repair, and fleet maintenance businesses.",
+    "serviceType": [
+      "Invoicing and accounts receivable support",
+      "Administrative support for contractors",
+      "Job paperwork and document coordination",
+      "Accounts payable and vendor paperwork",
+      "Operations administration"
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="OC Digital home">
+        <img src="ocdidigtlacircular%20icon.png" alt="OC Digital circular logo" width="43" height="43">
+        <span class="brand-name">OC<span>Digital</span></span>
+      </a>
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="#what-we-handle">What we handle</a>
+        <a href="#results">Client results</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#team">The team</a>
+      </nav>
+      <a class="nav-cta" href="tel:+19144362349">Talk to our team <span class="arrow">↗</span></a>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="navLinks">☰</button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Back-office support for service businesses</span>
+          <h1>Good work shouldn't get buried in <span class="accent">paperwork.</span></h1>
+          <p class="hero-copy">Invoices sitting unfinished. Customers who need a follow-up. Job details scattered across texts, emails, and notebooks. OC Digital takes recurring admin off your plate, so you can focus on the work and the business.</p>
+          <div class="hero-actions">
+            <a class="button button-orange" href="tel:+19144362349">Let's talk about your workload <span class="arrow">↗</span></a>
+            <a class="button button-outline" href="#what-we-handle">See what we handle</a>
+          </div>
+          <div class="hero-note"><span class="note-mark"></span> Practical support. Real people. Work handled inside your existing systems.</div>
+        </div>
+        <div class="hero-visual" aria-label="Examples of administrative tasks OC Digital can handle">
+          <div class="glass-panel">
+            <div class="panel-top">
+              <span class="panel-label">Your back office, in order</span>
+              <span class="panel-status">Handled</span>
+            </div>
+            <h2 class="panel-title">The details are moving.</h2>
+            <p class="panel-subtitle">A few of the things we can take off your list.</p>
+            <div class="task-list">
+              <div class="task"><span class="task-icon">↗</span><span><strong>Invoices sent</strong><small>Completed jobs turned into bills</small></span><span class="task-check">✓</span></div>
+              <div class="task"><span class="task-icon">$</span><span><strong>Payment follow-ups</strong><small>Past-due accounts aren't forgotten</small></span><span class="task-check">✓</span></div>
+              <div class="task"><span class="task-icon">▤</span><span><strong>Job paperwork organized</strong><small>Documents easy to find when needed</small></span><span class="task-check">✓</span></div>
+              <div class="task"><span class="task-icon">⌁</span><span><strong>Loose ends followed through</strong><small>Routine admin doesn't sit untouched</small></span><span class="task-check">✓</span></div>
+            </div>
+          </div>
+          <div class="floating-tag"><strong class="floating-number">3 hrs</strong><span class="floating-caption">a week returned<br>in one client engagement</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust-strip" aria-label="Industries served">
+      <div class="container trust-inner">
+        <span class="trust-label">Built around service businesses</span>
+        <div class="trust-items"><span>HVAC</span><span>Plumbing</span><span>Electrical</span><span>Commercial Cleaning</span><span>Auto & Fleet</span></div>
+      </div>
+    </section>
+
+    <section class="section pain-section" id="the-problem">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">The everyday bottleneck</span>
+          <h2>It's not the work that's slowing you down.</h2>
+          <p>It's everything that comes after it. The admin is repetitive, important, and easy to put off when customers and crews need your attention.</p>
+        </div>
+        <div class="pain-grid">
+          <article class="pain-card"><span class="pain-number">01 / CASH FLOW</span><h3>Work completed. Invoice still unsent.</h3><p>Jobs are finished, but the invoice waits until someone has time to pull the details together. That delay pushes payment further out.</p></article>
+          <article class="pain-card"><span class="pain-number">02 / FOLLOW-THROUGH</span><h3>Overdue accounts keep slipping.</h3><p>You know who owes you money. Finding the time to send reminders, check replies, and follow up again is another matter.</p></article>
+          <article class="pain-card"><span class="pain-number">03 / ADMIN LOAD</span><h3>Small tasks become a second job.</h3><p>Work orders, receipts, vendor forms, service records, and customer details pile up across different systems and inboxes.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="what-we-handle">
+      <div class="container services-layout">
+        <div class="services-intro">
+          <span class="eyebrow">What we take off your plate</span>
+          <h2>More follow-through. Less back-office drag.</h2>
+          <p>We work with the tools and processes you already use. First, we identify the recurring tasks taking up your time. Then we agree on the handoffs, permissions, and approval points—and handle the routine work consistently.</p>
+          <a class="button button-orange" href="tel:+19144362349">Discuss your admin workload <span class="arrow">↗</span></a>
+        </div>
+        <div class="service-list">
+          <article class="service-row"><span class="service-icon">$</span><div><h3>Invoicing & accounts receivable</h3><p>Prepare and send invoices from completed jobs, keep an eye on aging balances, send courteous payment reminders, reconcile status updates, and flag accounts that need your attention.</p></div></article>
+          <article class="service-row"><span class="service-icon">▤</span><div><h3>Job & service paperwork</h3><p>Keep work orders, job details, photos, service records, customer documents, and closeout paperwork organized and moving to the right place.</p></div></article>
+          <article class="service-row"><span class="service-icon">↔</span><div><h3>Customer & vendor follow-through</h3><p>Handle routine document requests, collect missing information, coordinate responses, and make sure open administrative items do not disappear into an inbox.</p></div></article>
+          <article class="service-row"><span class="service-icon">▧</span><div><h3>Accounts payable & paperwork tracking</h3><p>Organize vendor invoices and receipts, track due dates and credits, prepare information for approval, and maintain a clear record of what's outstanding.</p></div></article>
+          <article class="service-row"><span class="service-icon">✓</span><div><h3>Recurring records & renewals</h3><p>Track document expirations, employee or equipment records, routine forms, and renewal dates—then prompt the right person before something is missed.</p></div></article>
+          <article class="service-row"><span class="service-icon">＋</span><div><h3>The admin task that's specific to your business</h3><p>Every operation has its own friction. We can scope recurring administrative workflows around your actual process rather than forcing you into a generic package.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section case-section" id="results">
+      <div class="container case-grid">
+        <div>
+          <span class="eyebrow">A real-world example</span>
+          <h2>Getting invoices out—and money back in.</h2>
+          <p class="case-intro">For a local plumbing business, the problem wasn't a lack of work. It was the time required to bill for it and stay on top of unpaid invoices.</p>
+        </div>
+        <div class="case-quote">
+          <div class="quote-mark">“</div>
+          <h3>Martin's Plumbing · Westport</h3>
+          <p>Martin was spending up to three hours every week managing invoicing and collections. OC Digital took that recurring process off his plate, helped catch up on delayed invoices, and followed through on outstanding accounts—helping him collect money he had already earned.</p>
+          <div class="case-stats">
+            <div class="case-stat"><strong>3 hrs</strong><span>of admin time per week that had been going to invoicing and collections</span></div>
+            <div class="case-stat"><strong>Back on track</strong><span>Delayed invoices addressed and overdue accounts followed up</span></div>
+          </div>
+          <div class="case-client"><span class="client-dot">MP</span><span><strong>Martin's Plumbing</strong><small>Plumbing contractor · Westport</small></span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="how-it-works">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">A straightforward process</span>
+          <h2>Start with the headache. Not a software overhaul.</h2>
+          <p>No complicated implementation or giant package to buy. We begin with one conversation about what keeps getting pushed to the bottom of your list.</p>
+        </div>
+        <div class="process-grid">
+          <article class="process-step"><h3>Show us the bottleneck</h3><p>Tell us which paperwork, follow-ups, or recurring admin tasks are taking up time or holding things up.</p></article>
+          <article class="process-step"><h3>Agree on the workflow</h3><p>We map out the steps, systems, access, and decisions that need your approval. You stay in control of sensitive actions.</p></article>
+          <article class="process-step"><h3>We keep it moving</h3><p>Our team handles the agreed work, keeps you informed, and flags exceptions instead of letting them sit unnoticed.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="scope-section">
+      <div class="container">
+        <div class="scope-card">
+          <div><span class="eyebrow">A sensible fit</span><h2>Support that fits the workload.</h2><p>Not every business needs the same level of help. We scope engagements around the number of jobs, volume of paperwork, systems involved, and how much you want off your plate. You'll know what's included before anything begins.</p></div>
+          <div class="scope-aside"><span>Engagements are</span><strong>Customized to your needs</strong><a class="button button-orange" href="tel:+19144362349">Get a clear scope <span class="arrow">↗</span></a></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section team-section" id="team">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">The people behind the work</span>
+          <h2>A real team, accountable for the details.</h2>
+          <p>You'll know who you're working with and who to reach when something needs attention.</p>
+        </div>
+        <div class="team-grid">
+          <article class="team-card">
+            <div class="team-photo">NS<img src="niksheadshot.png" alt="Nik S., Head of Operations" loading="lazy" onerror="this.remove()"></div>
+            <div><h3>Nik S.</h3><p>Head of Operations</p></div>
+          </article>
+          <article class="team-card">
+            <div class="team-photo">LM<img src="lukeheadshot.png" alt="Luke M., Head of Sales" loading="lazy" onerror="this.remove()"></div>
+            <div><h3>Luke M.</h3><p>Head of Sales</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="container faq-layout">
+        <div class="section-heading">
+          <span class="eyebrow">A few practical questions</span>
+          <h2>Good to know before we talk.</h2>
+          <p>We keep the arrangement straightforward and define responsibilities before work starts.</p>
+        </div>
+        <div class="faq-list">
+          <details><summary>Do we need to switch software?</summary><p>No. We aim to work inside the systems you already use wherever practical. The goal is to take work off your plate, not force a new platform into your operation.</p></details>
+          <details><summary>Can you contact customers about unpaid invoices?</summary><p>Yes. We can prepare and send agreed reminders, track responses, and escalate disputes or sensitive situations to you. The tone, timing, and boundaries are agreed in advance.</p></details>
+          <details><summary>How do you handle access to business information?</summary><p>We define the systems and permissions needed for the agreed tasks before starting. Approval points for payments, adjustments, commitments, and other sensitive decisions remain with you unless expressly authorized.</p></details>
+          <details><summary>Is this only for plumbing and HVAC companies?</summary><p>No. We work around the administrative needs of service businesses, including plumbing, HVAC, electrical, commercial cleaning, auto repair, and fleet maintenance operations.</p></details>
+          <details><summary>How much does it cost?</summary><p>It depends on the volume and complexity of the work. We first identify what you need handled, then provide a scope and monthly price that makes sense for that workload. There is no need to commit to a large package just to start a conversation.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="footer-cta" id="contact">
+      <div class="container">
+        <span class="eyebrow">Let's get the backlog under control</span>
+        <h2>What's the admin task you wish someone would just handle?</h2>
+        <p>Tell us what's getting pushed off. We'll talk through whether we can take it over and what a sensible arrangement would look like.</p>
+        <div class="hero-actions">
+          <a class="button button-orange" href="tel:+19144362349">Call (914) 436-2349 <span class="arrow">↗</span></a>
+          <a class="button button-outline" href="sms:+19144362349">Send us a text</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <a class="footer-brand" href="#top"><img src="ocdidigtlacircular%20icon.png" alt="" width="30" height="30"> OC Digital</a>
+      <div class="footer-meta"><span>© <span id="year">2026</span> OC Digital</span><a href="tel:+19144362349">(914) 436-2349</a><a href="#top">Back to top ↑</a></div>
+    </div>
+  </footer>
+  <script>
+    const toggle = document.getElementById('menuToggle');
+    const nav = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+      toggle.textContent = open ? '×' : '☰';
+    });
+    nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      nav.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Open navigation');
+      toggle.textContent = '☰';
+    }));
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
