@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <script>document.documentElement.classList.add('js');</script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f7f7f5">
@@ -221,9 +222,10 @@
     details { border-bottom: 1px solid var(--line); padding: 19px 0; }
     summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: 20px; font: 700 14px "Manrope", sans-serif; }
     summary::-webkit-details-marker { display: none; }
-    summary::after { content: "+"; color: var(--orange-dark); font: 400 21px/1 "DM Sans", sans-serif; }
-    details[open] summary::after { content: "−"; }
-    details p { max-width: 620px; margin: 12px 30px 0 0; color: var(--muted); font-size: 13px; line-height: 1.8; }
+    summary::after { content: "+"; color: var(--orange-dark); font: 400 21px/1 "DM Sans", sans-serif; display: inline-block; transition: transform .35s cubic-bezier(.22,1,.36,1); }
+    details[open] summary::after { transform: rotate(45deg); }
+    details p { max-width: 620px; margin: 0 30px 0 0; color: var(--muted); font-size: 13px; line-height: 1.8; overflow: hidden; max-height: 0; opacity: 0; transition: max-height .35s ease, opacity .25s ease, margin-top .35s ease; }
+    details[open] p { max-height: 320px; opacity: 1; margin-top: 12px; }
     .footer-cta { padding: 83px 0; background: #fff; text-align: center; }
     .footer-cta h2 { max-width: 700px; margin: 15px auto; font: 800 clamp(37px, 5vw, 57px)/1.03 "Manrope", sans-serif; letter-spacing: -.06em; }
     .footer-cta p { max-width: 520px; margin: 0 auto; color: var(--muted); font-size: 15px; line-height: 1.8; }
@@ -248,8 +250,8 @@
       .brand img { width: 39px; height: 39px; }
       .menu-toggle { display: grid; place-items: center; }
       .nav-cta { display: none; }
-      .nav-links { display: none; position: absolute; top: 62px; left: 18px; right: 18px; padding: 18px; border: 1px solid rgba(255,255,255,.9); border-radius: 18px; background: rgba(255,255,255,.94); box-shadow: 0 18px 50px rgba(30,35,31,.12); backdrop-filter: blur(20px); flex-direction: column; align-items: stretch; gap: 0; }
-      .nav-links.open { display: flex; }
+      .nav-links { display: flex; position: absolute; top: 62px; left: 18px; right: 18px; padding: 18px; border: 1px solid rgba(255,255,255,.9); border-radius: 18px; background: rgba(255,255,255,.94); box-shadow: 0 18px 50px rgba(30,35,31,.12); backdrop-filter: blur(20px); flex-direction: column; align-items: stretch; gap: 0; opacity: 0; transform: translateY(-8px); pointer-events: none; transition: opacity .25s ease, transform .25s ease; }
+      .nav-links.open { opacity: 1; transform: translateY(0); pointer-events: auto; }
       .nav-links a { padding: 13px 7px; border-bottom: 1px solid var(--line); }
       .nav-links a:last-child { border: 0; }
       .hero { padding: 58px 0 45px; }
@@ -279,10 +281,84 @@
       .footer-inner { align-items: flex-start; flex-direction: column; }
       .footer-meta { flex-wrap: wrap; gap: 12px 20px; }
     }
+    /* === Motion === */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes drawLine { from { width: 0; } to { width: 20px; } }
+    @keyframes gentleFloat { 0%,100% { transform: rotate(1.2deg) translateY(0); } 50% { transform: rotate(1.2deg) translateY(-7px); } }
+    @keyframes tagFloat { 0%,100% { transform: rotate(-2deg) translateY(0); } 50% { transform: rotate(-2deg) translateY(-5px); } }
+    @keyframes pulseDot { 0%,100% { box-shadow: 0 0 0 4px rgba(251,130,0,.12); } 50% { box-shadow: 0 0 0 7px rgba(251,130,0,.04); } }
+
+    /* Hero entrance — fires once on load */
+    .hero .eyebrow { opacity: 0; animation: fadeUp .7s cubic-bezier(.22,1,.36,1) .15s forwards; }
+    .hero .eyebrow::before { animation: drawLine .6s cubic-bezier(.22,1,.36,1) .35s both; }
+    .hero h1 { opacity: 0; animation: fadeUp .8s cubic-bezier(.22,1,.36,1) .25s forwards; }
+    .hero .hero-copy { opacity: 0; animation: fadeUp .7s cubic-bezier(.22,1,.36,1) .42s forwards; }
+    .hero .hero-actions { opacity: 0; animation: fadeUp .7s cubic-bezier(.22,1,.36,1) .55s forwards; }
+    .hero .hero-note { opacity: 0; animation: fadeUp .7s cubic-bezier(.22,1,.36,1) .7s forwards; }
+    .hero .hero-visual { opacity: 0; animation: fadeIn 1s ease .4s forwards; }
+
+    /* Continuous gentle motion */
+    .glass-panel { animation: gentleFloat 7s ease-in-out infinite; animation-delay: 1.2s; }
+    .floating-tag { animation: tagFloat 6s ease-in-out infinite; animation-delay: 1.4s; }
+    .note-mark { animation: pulseDot 2.6s ease-in-out infinite; }
+
+    /* Scroll reveals (hidden only when JS is active) */
+    html.js .reveal { opacity: 0; transform: translateY(22px); transition: opacity .8s cubic-bezier(.22,1,.36,1), transform .8s cubic-bezier(.22,1,.36,1); will-change: opacity, transform; }
+    html.js .reveal.in-view { opacity: 1; transform: translateY(0); }
+    html.js .reveal.d1 { transition-delay: .08s; }
+    html.js .reveal.d2 { transition-delay: .16s; }
+    html.js .reveal.d3 { transition-delay: .24s; }
+    html.js .reveal.d4 { transition-delay: .32s; }
+    html.js .reveal.d5 { transition-delay: .40s; }
+    html.js .reveal.d6 { transition-delay: .48s; }
+    html.js .reveal .eyebrow::before { width: 0; transition: width .65s cubic-bezier(.22,1,.36,1) .25s; }
+    html.js .reveal.in-view .eyebrow::before { width: 20px; }
+
+    /* Nav link underline */
+    .nav-links a { position: relative; }
+    .nav-links a::after { content: ""; position: absolute; left: 0; bottom: -5px; height: 1px; width: 0; background: var(--orange-dark); transition: width .35s cubic-bezier(.22,1,.36,1); }
+    .nav-links a:hover::after { width: 100%; }
+
+    /* Button arrow nudge */
+    .button .arrow, .nav-cta .arrow { transition: transform .25s cubic-bezier(.22,1,.36,1); display: inline-block; }
+    .button:hover .arrow, .nav-cta:hover .arrow { transform: translate(3px, -3px); }
+
+    /* Service row hover */
+    .service-row { transition: padding-left .35s cubic-bezier(.22,1,.36,1); padding-left: 0; }
+    .service-row:hover { padding-left: 6px; }
+    .service-icon { transition: transform .35s cubic-bezier(.22,1,.36,1), background .25s ease; }
+    .service-row:hover .service-icon { transform: rotate(-6deg) scale(1.06); background: #ffefd9; }
+
+    /* Pain card accent line on hover */
+    .pain-card { position: relative; overflow: hidden; }
+    .pain-card::after { content: ""; position: absolute; left: 0; bottom: 0; height: 2px; width: 0; background: var(--orange); transition: width .4s cubic-bezier(.22,1,.36,1); }
+    .pain-card:hover::after { width: 100%; }
+
+    /* Team card hover */
+    .team-card { transition: transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s ease; }
+    .team-card:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(26,30,27,.06); }
+
+    /* Trust items stagger */
+    html.js .trust-items span { opacity: 0; transform: translateY(6px); transition: opacity .5s ease, transform .5s cubic-bezier(.22,1,.36,1); }
+    html.js .trust-items.in-view span { opacity: 1; transform: translateY(0); }
+    html.js .trust-items.in-view span:nth-child(1) { transition-delay: .10s; }
+    html.js .trust-items.in-view span:nth-child(2) { transition-delay: .18s; }
+    html.js .trust-items.in-view span:nth-child(3) { transition-delay: .26s; }
+    html.js .trust-items.in-view span:nth-child(4) { transition-delay: .34s; }
+    html.js .trust-items.in-view span:nth-child(5) { transition-delay: .42s; }
+
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+      .reveal { opacity: 1 !important; transform: none !important; }
+      .reveal .eyebrow::before { width: 20px !important; }
+      .hero .eyebrow, .hero h1, .hero .hero-copy, .hero .hero-actions, .hero .hero-note, .hero .hero-visual { opacity: 1 !important; }
+      .hero .eyebrow::before { width: 20px !important; }
+      .glass-panel, .floating-tag, .note-mark { animation: none !important; }
+      .trust-items span { opacity: 1 !important; transform: none !important; }
     }
   </style>
+  <noscript><style>.reveal, .trust-items span { opacity: 1 !important; transform: none !important; }</style></noscript>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -326,12 +402,12 @@
         <div>
           <span class="eyebrow">Back-office support for service businesses</span>
           <h1>Good work shouldn't get buried in <span class="accent">paperwork.</span></h1>
-          <p class="hero-copy">Invoices sitting unfinished. Customers who need a follow-up. Job details scattered across texts, emails, and notebooks. OC Digital takes recurring admin off your plate, so you can focus on the work and the business.</p>
+          <p class="hero-copy">Invoices sitting unfinished. Customers who need a follow-up. Job details scattered across texts, emails, and notebooks. We take the recurring admin off your plate so the work doesn't pile up behind you.</p>
           <div class="hero-actions">
             <a class="button button-orange" href="tel:+19144362349">Let's talk about your workload <span class="arrow">↗</span></a>
             <a class="button button-outline" href="#what-we-handle">See what we handle</a>
           </div>
-          <div class="hero-note"><span class="note-mark"></span> Practical support. Real people. Work handled inside your existing systems.</div>
+          <div class="hero-note"><span class="note-mark"></span> Practical support. Real people. We work inside the systems you already use.</div>
         </div>
         <div class="hero-visual" aria-label="Examples of administrative tasks OC Digital can handle">
           <div class="glass-panel">
@@ -353,7 +429,7 @@
       </div>
     </section>
 
-    <section class="trust-strip" aria-label="Industries served">
+    <section class="trust-strip reveal" aria-label="Industries served">
       <div class="container trust-inner">
         <span class="trust-label">Built around service businesses</span>
         <div class="trust-items"><span>HVAC</span><span>Plumbing</span><span>Electrical</span><span>Commercial Cleaning</span><span>Auto & Fleet</span></div>
@@ -362,49 +438,49 @@
 
     <section class="section pain-section" id="the-problem">
       <div class="container">
-        <div class="section-heading">
+        <div class="section-heading reveal">
           <span class="eyebrow">The everyday bottleneck</span>
           <h2>It's not the work that's slowing you down.</h2>
           <p>It's everything that comes after it. The admin is repetitive, important, and easy to put off when customers and crews need your attention.</p>
         </div>
         <div class="pain-grid">
-          <article class="pain-card"><span class="pain-number">01 / CASH FLOW</span><h3>Work completed. Invoice still unsent.</h3><p>Jobs are finished, but the invoice waits until someone has time to pull the details together. That delay pushes payment further out.</p></article>
-          <article class="pain-card"><span class="pain-number">02 / FOLLOW-THROUGH</span><h3>Overdue accounts keep slipping.</h3><p>You know who owes you money. Finding the time to send reminders, check replies, and follow up again is another matter.</p></article>
-          <article class="pain-card"><span class="pain-number">03 / ADMIN LOAD</span><h3>Small tasks become a second job.</h3><p>Work orders, receipts, vendor forms, service records, and customer details pile up across different systems and inboxes.</p></article>
+          <article class="pain-card reveal d1"><span class="pain-number">01 / CASH FLOW</span><h3>Work completed. Invoice still unsent.</h3><p>Jobs are finished, but the invoice waits until someone has time to pull the details together. That delay pushes payment further out.</p></article>
+          <article class="pain-card reveal d2"><span class="pain-number">02 / FOLLOW-THROUGH</span><h3>Overdue accounts keep slipping.</h3><p>You know who owes you money. Finding the time to send reminders, check replies, and follow up again is another matter.</p></article>
+          <article class="pain-card reveal d3"><span class="pain-number">03 / ADMIN LOAD</span><h3>Small tasks become a second job.</h3><p>Work orders, receipts, vendor forms, and service records pile up across systems and inboxes.</p></article>
         </div>
       </div>
     </section>
 
     <section class="section" id="what-we-handle">
       <div class="container services-layout">
-        <div class="services-intro">
+        <div class="services-intro reveal">
           <span class="eyebrow">What we take off your plate</span>
           <h2>More follow-through. Less back-office drag.</h2>
-          <p>We work with the tools and processes you already use. First, we identify the recurring tasks taking up your time. Then we agree on the handoffs, permissions, and approval points—and handle the routine work consistently.</p>
-          <a class="button button-orange" href="tel:+19144362349">Discuss your admin workload <span class="arrow">↗</span></a>
+          <p>We work inside the tools you already use. First, we figure out which recurring tasks eat your time. Then we agree on handoffs, access, and approval points—and take it from there.</p>
+          <a class="button button-orange" href="tel:+19144362349">Talk about your admin workload <span class="arrow">↗</span></a>
         </div>
         <div class="service-list">
-          <article class="service-row"><span class="service-icon">$</span><div><h3>Invoicing & accounts receivable</h3><p>Prepare and send invoices from completed jobs, keep an eye on aging balances, send courteous payment reminders, reconcile status updates, and flag accounts that need your attention.</p></div></article>
-          <article class="service-row"><span class="service-icon">▤</span><div><h3>Job & service paperwork</h3><p>Keep work orders, job details, photos, service records, customer documents, and closeout paperwork organized and moving to the right place.</p></div></article>
-          <article class="service-row"><span class="service-icon">↔</span><div><h3>Customer & vendor follow-through</h3><p>Handle routine document requests, collect missing information, coordinate responses, and make sure open administrative items do not disappear into an inbox.</p></div></article>
-          <article class="service-row"><span class="service-icon">▧</span><div><h3>Accounts payable & paperwork tracking</h3><p>Organize vendor invoices and receipts, track due dates and credits, prepare information for approval, and maintain a clear record of what's outstanding.</p></div></article>
-          <article class="service-row"><span class="service-icon">✓</span><div><h3>Recurring records & renewals</h3><p>Track document expirations, employee or equipment records, routine forms, and renewal dates—then prompt the right person before something is missed.</p></div></article>
-          <article class="service-row"><span class="service-icon">＋</span><div><h3>The admin task that's specific to your business</h3><p>Every operation has its own friction. We can scope recurring administrative workflows around your actual process rather than forcing you into a generic package.</p></div></article>
+          <article class="service-row reveal d1"><span class="service-icon">$</span><div><h3>Invoicing & accounts receivable</h3><p>Pull details from completed jobs and send invoices out. Track aging balances, send payment reminders, and flag the accounts that need you to step in.</p></div></article>
+          <article class="service-row reveal d2"><span class="service-icon">▤</span><div><h3>Job & service paperwork</h3><p>Keep work orders, job photos, service records, customer documents, and closeout paperwork where they belong—easy to find when you need them.</p></div></article>
+          <article class="service-row reveal d3"><span class="service-icon">↔</span><div><h3>Customer & vendor follow-through</h3><p>Handle routine document requests, chase down missing info, and keep open items from getting buried in an inbox.</p></div></article>
+          <article class="service-row reveal d4"><span class="service-icon">▧</span><div><h3>Accounts payable & paperwork tracking</h3><p>Organize vendor invoices and receipts. Track due dates and credits, prep what needs approval, and keep a clear picture of what's outstanding.</p></div></article>
+          <article class="service-row reveal d5"><span class="service-icon">✓</span><div><h3>Recurring records & renewals</h3><p>Track expiring documents, employee and equipment records, routine forms, and renewal dates—and nudge the right person before something slips.</p></div></article>
+          <article class="service-row reveal d6"><span class="service-icon">＋</span><div><h3>The admin task that's specific to your business</h3><p>Every operation has its own friction. We can build a workflow around how you actually work—no off-the-shelf package.</p></div></article>
         </div>
       </div>
     </section>
 
     <section class="section case-section" id="results">
       <div class="container case-grid">
-        <div>
+        <div class="reveal">
           <span class="eyebrow">A real-world example</span>
           <h2>Getting invoices out—and money back in.</h2>
-          <p class="case-intro">For a local plumbing business, the problem wasn't a lack of work. It was the time required to bill for it and stay on top of unpaid invoices.</p>
+          <p class="case-intro">For a local plumbing business, the problem wasn't a lack of work. It was finding the time to bill for it—and stay on top of unpaid invoices.</p>
         </div>
-        <div class="case-quote">
+        <div class="case-quote reveal d2">
           <div class="quote-mark">“</div>
           <h3>Martin's Plumbing · Westport</h3>
-          <p>Martin was spending up to three hours every week managing invoicing and collections. OC Digital took that recurring process off his plate, helped catch up on delayed invoices, and followed through on outstanding accounts—helping him collect money he had already earned.</p>
+          <p>Martin was losing up to three hours a week to invoicing and collections. We took that off his plate, caught up on delayed invoices, and followed through on outstanding accounts—so he got paid for work he'd already done.</p>
           <div class="case-stats">
             <div class="case-stat"><strong>3 hrs</strong><span>of admin time per week that had been going to invoicing and collections</span></div>
             <div class="case-stat"><strong>Back on track</strong><span>Delayed invoices addressed and overdue accounts followed up</span></div>
@@ -416,23 +492,23 @@
 
     <section class="section" id="how-it-works">
       <div class="container">
-        <div class="section-heading">
+        <div class="section-heading reveal">
           <span class="eyebrow">A straightforward process</span>
           <h2>Start with the headache. Not a software overhaul.</h2>
           <p>No complicated implementation or giant package to buy. We begin with one conversation about what keeps getting pushed to the bottom of your list.</p>
         </div>
         <div class="process-grid">
-          <article class="process-step"><h3>Show us the bottleneck</h3><p>Tell us which paperwork, follow-ups, or recurring admin tasks are taking up time or holding things up.</p></article>
-          <article class="process-step"><h3>Agree on the workflow</h3><p>We map out the steps, systems, access, and decisions that need your approval. You stay in control of sensitive actions.</p></article>
-          <article class="process-step"><h3>We keep it moving</h3><p>Our team handles the agreed work, keeps you informed, and flags exceptions instead of letting them sit unnoticed.</p></article>
+          <article class="process-step reveal d1"><h3>Show us the bottleneck</h3><p>Tell us which paperwork, follow-ups, or recurring admin tasks are taking up time or holding things up.</p></article>
+          <article class="process-step reveal d2"><h3>Agree on the workflow</h3><p>We map out the steps, systems, access, and decisions that need your approval. You stay in control of sensitive actions.</p></article>
+          <article class="process-step reveal d3"><h3>We keep it moving</h3><p>We handle the agreed work, keep you in the loop, and flag anything that needs your call—instead of letting it sit.</p></article>
         </div>
       </div>
     </section>
 
     <section class="scope-section">
       <div class="container">
-        <div class="scope-card">
-          <div><span class="eyebrow">A sensible fit</span><h2>Support that fits the workload.</h2><p>Not every business needs the same level of help. We scope engagements around the number of jobs, volume of paperwork, systems involved, and how much you want off your plate. You'll know what's included before anything begins.</p></div>
+        <div class="scope-card reveal">
+          <div><span class="eyebrow">A sensible fit</span><h2>Support that fits the workload.</h2><p>Not every business needs the same level of help. We shape the engagement around your job volume, paperwork load, systems, and how much you want off your plate. You'll know what's included before we start.</p></div>
           <div class="scope-aside"><span>Engagements are</span><strong>Customized to your needs</strong><a class="button button-orange" href="tel:+19144362349">Get a clear scope <span class="arrow">↗</span></a></div>
         </div>
       </div>
@@ -440,17 +516,17 @@
 
     <section class="section team-section" id="team">
       <div class="container">
-        <div class="section-heading">
+        <div class="section-heading reveal">
           <span class="eyebrow">The people behind the work</span>
-          <h2>A real team, accountable for the details.</h2>
-          <p>You'll know who you're working with and who to reach when something needs attention.</p>
+          <h2>People you'll actually talk to.</h2>
+          <p>You'll know who you're working with—and who to call when something needs attention.</p>
         </div>
         <div class="team-grid">
-          <article class="team-card">
+          <article class="team-card reveal d1">
             <div class="team-photo">NS<img src="niksheadshot.png" alt="Nik S., Head of Operations" loading="lazy" onerror="this.remove()"></div>
             <div><h3>Nik S.</h3><p>Head of Operations</p></div>
           </article>
-          <article class="team-card">
+          <article class="team-card reveal d2">
             <div class="team-photo">LM<img src="lukeheadshot.png" alt="Luke M., Head of Sales" loading="lazy" onerror="this.remove()"></div>
             <div><h3>Luke M.</h3><p>Head of Sales</p></div>
           </article>
@@ -460,27 +536,27 @@
 
     <section class="section" id="faq">
       <div class="container faq-layout">
-        <div class="section-heading">
+        <div class="section-heading reveal">
           <span class="eyebrow">A few practical questions</span>
           <h2>Good to know before we talk.</h2>
           <p>We keep the arrangement straightforward and define responsibilities before work starts.</p>
         </div>
         <div class="faq-list">
-          <details><summary>Do we need to switch software?</summary><p>No. We aim to work inside the systems you already use wherever practical. The goal is to take work off your plate, not force a new platform into your operation.</p></details>
-          <details><summary>Can you contact customers about unpaid invoices?</summary><p>Yes. We can prepare and send agreed reminders, track responses, and escalate disputes or sensitive situations to you. The tone, timing, and boundaries are agreed in advance.</p></details>
-          <details><summary>How do you handle access to business information?</summary><p>We define the systems and permissions needed for the agreed tasks before starting. Approval points for payments, adjustments, commitments, and other sensitive decisions remain with you unless expressly authorized.</p></details>
-          <details><summary>Is this only for plumbing and HVAC companies?</summary><p>No. We work around the administrative needs of service businesses, including plumbing, HVAC, electrical, commercial cleaning, auto repair, and fleet maintenance operations.</p></details>
-          <details><summary>How much does it cost?</summary><p>It depends on the volume and complexity of the work. We first identify what you need handled, then provide a scope and monthly price that makes sense for that workload. There is no need to commit to a large package just to start a conversation.</p></details>
+          <details class="reveal d1"><summary>Do we need to switch software?</summary><p>No. We work inside the systems you already use whenever we can. The point is to take work off your plate, not sell you new software.</p></details>
+          <details class="reveal d2"><summary>Can you contact customers about unpaid invoices?</summary><p>Yes. We can prepare and send agreed reminders, track responses, and escalate disputes or sensitive situations to you. The tone, timing, and boundaries are agreed in advance.</p></details>
+          <details class="reveal d3"><summary>How do you handle access to business information?</summary><p>We sort out the systems and permissions the work requires before we start. Anything sensitive—payments, adjustments, commitments—stays with you unless you explicitly hand it over.</p></details>
+          <details class="reveal d4"><summary>Is this only for plumbing and HVAC companies?</summary><p>No. We work around the administrative needs of service businesses, including plumbing, HVAC, electrical, commercial cleaning, auto repair, and fleet maintenance operations.</p></details>
+          <details class="reveal d5"><summary>How much does it cost?</summary><p>Depends on volume and complexity. We figure out what you actually need handled, then put together a scope and monthly price that fits. You don't have to commit to a big package to start a conversation.</p></details>
         </div>
       </div>
     </section>
 
     <section class="footer-cta" id="contact">
       <div class="container">
-        <span class="eyebrow">Let's get the backlog under control</span>
-        <h2>What's the admin task you wish someone would just handle?</h2>
-        <p>Tell us what's getting pushed off. We'll talk through whether we can take it over and what a sensible arrangement would look like.</p>
-        <div class="hero-actions">
+        <span class="eyebrow reveal">Let's get the backlog under control</span>
+        <h2 class="reveal d1">What's the admin task you wish someone would just handle?</h2>
+        <p class="reveal d2">Tell us what's getting pushed off. We'll talk through whether we can take it on—and what the setup would look like.</p>
+        <div class="hero-actions reveal d3">
           <a class="button button-orange" href="tel:+19144362349">Call (914) 436-2349 <span class="arrow">↗</span></a>
           <a class="button button-outline" href="sms:+19144362349">Send us a text</a>
         </div>
@@ -510,6 +586,22 @@
       toggle.textContent = '☰';
     }));
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Scroll-triggered reveals
+    const revealTargets = document.querySelectorAll('.reveal, .trust-items');
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+      revealTargets.forEach(el => io.observe(el));
+    } else {
+      revealTargets.forEach(el => el.classList.add('in-view'));
+    }
   </script>
 </body>
 </html>
