@@ -186,7 +186,15 @@
     .case-stat strong { display: block; color: #ffad52; font: 800 27px/1.1 "Manrope", sans-serif; letter-spacing: -.05em; }
     .case-stat span { display: block; margin-top: 6px; color: #c0c7c1; font-size: 11px; line-height: 1.45; }
     .case-client { display: flex; gap: 11px; align-items: center; margin-top: 23px; }
-    .client-dot { width: 36px; height: 36px; display: grid; place-items: center; border-radius: 50%; color: #ffb15d; background: rgba(251,130,0,.16); font-size: 12px; font-weight: 700; }
+    .client-dot {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  background: rgba(251,130,0,.16);
+}
     .case-client strong { display: block; font-size: 12px; }
     .case-client small { display: block; margin-top: 3px; color: #9ca69f; font-size: 10px; }
 
@@ -485,7 +493,13 @@
             <div class="case-stat"><strong>3 hrs</strong><span>of admin time per week that had been going to invoicing and collections</span></div>
             <div class="case-stat"><strong>Back on track</strong><span>Delayed invoices addressed and overdue accounts followed up</span></div>
           </div>
-          <div class="case-client"><span class="client-dot">MP</span><span><strong>Martin's Plumbing</strong><small>Plumbing contractor · Westport</small></span></div>
+          <div class="case-client">
+            <img src="martinsplumbing.png" alt="Martin's Plumbing logo" class="client-dot">
+            <span>
+              <strong>Martin's Plumbing</strong>
+              <small>Plumbing contractor · Westport</small>
+            </span>
+          </div>
         </div>
       </div>
     </section>
